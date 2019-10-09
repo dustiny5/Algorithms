@@ -3,7 +3,30 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
+  el = 0
+
+  # Profit of the first iteration
+  max_profit = prices[1] - prices[0]
+  cur_profit = prices[1] - prices[0]
+  
+  # Loop through the whole price list and end loop when we reach the end
+  while el < len(prices):
+    
+    # Compare current price to current price + subsequent prices
+    for price in prices[el+1:]:
+      if price - prices[el] > cur_profit:
+
+        # Save current profit for that iteration
+        cur_profit = price - prices[el]
+        
+    # If current price is greater than max profit then save to max profit
+    if cur_profit > max_profit:
+      max_profit = cur_profit
+     
+    # Increment to next element of prices and compare the subsequent prices
+    el += 1
+    
+  return max_profit
 
 
 if __name__ == '__main__':
