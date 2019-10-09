@@ -3,7 +3,18 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  how_many = []
+
+  # If ingredients are missing then return 0
+  if recipe.keys() != ingredients.keys():
+    return 0
+  
+  # Loop through list to get the floor ratio
+  for key in recipe:
+    how_many.append(ingredients[key] // recipe[key])
+
+  # Get the min amount of recipe
+  return min(how_many)
 
 
 if __name__ == '__main__':
